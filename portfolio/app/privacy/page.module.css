@@ -1,0 +1,86 @@
+.page {
+  padding-top: var(--nav-h);
+  min-height: 100vh;
+  background: var(--white);
+}
+
+.inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 48px 120px;
+}
+
+.header {
+  margin-bottom: 56px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.label {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  line-height: 1.1;
+}
+
+/* ── Body ────────────────────────────────────────────────── */
+
+.body {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--gray-600);
+  font-weight: 300;
+}
+
+.body section {
+  margin-bottom: 48px;
+}
+
+.body h2 {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--black);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.body p {
+  margin-bottom: 0;
+}
+
+.body a {
+  color: var(--black);
+  border-bottom: 1px solid var(--gray-300);
+  transition: border-color 0.2s;
+}
+
+.body a:hover {
+  border-color: var(--black);
+}
+
+.updated {
+  font-size: 12px;
+  color: var(--gray-400);
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--gray-100);
+}
+
+@media (max-width: 768px) {
+  .inner {
+    padding: 48px 24px 80px;
+  }
+}

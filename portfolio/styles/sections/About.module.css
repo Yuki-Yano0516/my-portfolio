@@ -1,0 +1,105 @@
+.about {
+  background: var(--gray-50);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+}
+
+.heading em {
+  font-style: italic;
+  color: var(--gray-500);
+}
+
+.body {
+  font-size: 15px;
+  color: var(--gray-700);
+  line-height: 1.85;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--gray-100);
+  margin: 40px 0;
+}
+
+.statRow {
+  display: flex;
+  gap: 48px;
+}
+
+.statNum {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: var(--gray-500);
+  letter-spacing: 0.05em;
+  font-weight: 300;
+}
+
+.skillGroup {
+  margin-bottom: 40px;
+}
+
+.skillGroupLabel {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray-300);
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+
+.skillList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skillPill {
+  font-size: 13px;
+  padding: 6px 14px;
+  border: 1px solid var(--gray-100);
+  color: var(--gray-700);
+  border-radius: 2px;
+  font-weight: 300;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.skillPill:hover {
+  background: var(--black);
+  border-color: var(--black);
+  color: var(--white);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .statRow {
+    gap: 32px;
+  }
+}

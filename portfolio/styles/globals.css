@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+/* ── Reset ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* ── CSS 変数 ────────────────────────────────────────────── */
+:root {
+  --black:    #111110;
+  --gray-900: #1c1c1a;
+  --gray-700: #3a3a37;
+  --gray-500: #6e6e68;
+  --gray-400: #8a8982;
+  --gray-300: #b0afa8;
+  --gray-100: #e8e7e2;
+  --gray-50:  #f4f3ef;
+  --white:    #fafaf8;
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  --nav-h: 72px;
+  --max-w: 1200px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Base ───────────────────────────────────────────────── */
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--black);
+  font-size: 15px;
+  line-height: 1.7;
+  cursor: none;
+}
+
+/* タッチデバイスではカーソルを通常に戻す */
+@media (hover: none) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* ── Section 共通 ────────────────────────────────────────── */
+.section {
+  padding: 140px 48px;
+}
+
+.inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.sectionLabel {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray-300);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 64px;
+  font-weight: 400;
+}
+
+.sectionLabel::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--gray-300);
+}
+
+/* ── Reveal アニメーション ────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity  0.7s ease,
+    transform 0.7s ease;
+  transition-delay: var(--delay, 0s);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 24px;
+  }
+}
