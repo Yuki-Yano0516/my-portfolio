@@ -1,0 +1,140 @@
+.mv {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bgText {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(120px, 18vw, 240px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--gray-100);
+  white-space: nowrap;
+  line-height: 1;
+  bottom: -20px;
+  right: -40px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  width: 100%;
+  padding-top: var(--nav-h);
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 400;
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  background: var(--gray-300);
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 8vw, 100px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 40px;
+  color: var(--black);
+}
+
+.headline em {
+  font-style: italic;
+  color: var(--gray-500);
+}
+
+.sub {
+  font-size: 15px;
+  color: var(--gray-500);
+  max-width: 440px;
+  line-height: 1.8;
+  margin-bottom: 56px;
+  font-weight: 300;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--black);
+  border-bottom: 1px solid var(--black);
+  padding-bottom: 4px;
+  font-weight: 400;
+  transition: gap 0.3s;
+}
+
+.cta:hover {
+  gap: 20px;
+}
+
+.ctaArrow {
+  font-size: 16px;
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.cta:hover .ctaArrow {
+  transform: translateX(4px);
+}
+
+.scrollHint {
+  position: absolute;
+  bottom: 40px;
+  left: 48px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray-300);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 400;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 40px;
+  background: var(--gray-300);
+  display: inline-block;
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(0.7); }
+}
+
+@media (max-width: 768px) {
+  .mv {
+    padding: 0 24px;
+  }
+
+  .scrollHint {
+    left: 24px;
+  }
+}
