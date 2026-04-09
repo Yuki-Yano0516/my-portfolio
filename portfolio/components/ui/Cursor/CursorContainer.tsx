@@ -34,22 +34,27 @@ export default function CursorContainer() {
     const addExpand    = () => cursor.classList.add(styles.expand);
     const removeExpand = () => cursor.classList.remove(styles.expand);
 
-    document.addEventListener('mousemove', onMouseMove);
-    rafId = requestAnimationFrame(moveCursor);
+    const onMouseOver = (e: MouseEvent) => {
+      if ((e.target as Element).closest('a, button, [data-cursor-expand]')) {
+        addExpand();
+      }
+    };
+    const onMouseOut = (e: MouseEvent) => {
+      if ((e.target as Element).closest('a, button, [data-cursor-expand]')) {
+        removeExpand();
+      }
+    };
 
-    const targets = document.querySelectorAll('a, button, [data-cursor-expand]');
-    targets.forEach((el) => {
-      el.addEventListener('mouseenter', addExpand);
-      el.addEventListener('mouseleave', removeExpand);
-    });
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseover', onMouseOver);
+    document.addEventListener('mouseout', onMouseOut);
+    rafId = requestAnimationFrame(moveCursor);
 
     return () => {
       document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseover', onMouseOver);
+      document.removeEventListener('mouseout', onMouseOut);
       cancelAnimationFrame(rafId);
-      targets.forEach((el) => {
-        el.removeEventListener('mouseenter', addExpand);
-        el.removeEventListener('mouseleave', removeExpand);
-      });
     };
   }, []);
 

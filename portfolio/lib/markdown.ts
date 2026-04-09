@@ -1,6 +1,7 @@
 import { marked } from 'marked';
 import { markedHighlight } from 'marked-highlight';
 import hljs from 'highlight.js';
+import DOMPurify from 'isomorphic-dompurify';
 
 marked.use(
   markedHighlight({
@@ -13,7 +14,8 @@ marked.use(
 );
 
 export async function markdownToHtml(markdown: string): Promise<string> {
-  return await marked.parse(markdown);
+  const raw = await marked.parse(markdown);
+  return DOMPurify.sanitize(raw);
 }
 
 // 日本語基準（600字/分）で読了時間を計算

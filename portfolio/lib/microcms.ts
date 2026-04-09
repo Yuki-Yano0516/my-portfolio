@@ -33,11 +33,25 @@ export const getWork = async (contentId: string) => {
 // Works の全スラッグ取得（静的生成用）
 export const getAllWorkSlugs = async (): Promise<Work[]> => {
   if (!client) return [];
-  const data = await client.getList<Work>({
+  const LIMIT = 100;
+  const first = await client.getList<Work>({
     endpoint: 'works',
-    queries: { limit: 100, fields: 'id' },
+    queries: { limit: LIMIT, offset: 0, fields: 'id' },
   });
-  return data.contents;
+  const contents = [...first.contents];
+  const pageCount = Math.ceil((first.totalCount - LIMIT) / LIMIT);
+  if (pageCount > 0) {
+    const pages = await Promise.all(
+      Array.from({ length: pageCount }, (_, i) =>
+        client!.getList<Work>({
+          endpoint: 'works',
+          queries: { limit: LIMIT, offset: (i + 1) * LIMIT, fields: 'id' },
+        })
+      )
+    );
+    pages.forEach((page) => contents.push(...page.contents));
+  }
+  return contents;
 };
 
 // Blog 一覧取得
@@ -62,9 +76,23 @@ export const getBlog = async (contentId: string) => {
 // Blog の全スラッグ取得（静的生成用）
 export const getAllBlogSlugs = async (): Promise<Blog[]> => {
   if (!client) return [];
-  const data = await client.getList<Blog>({
+  const LIMIT = 100;
+  const first = await client.getList<Blog>({
     endpoint: 'blog',
-    queries: { limit: 100, fields: 'id' },
+    queries: { limit: LIMIT, offset: 0, fields: 'id' },
   });
-  return data.contents;
+  const contents = [...first.contents];
+  const pageCount = Math.ceil((first.totalCount - LIMIT) / LIMIT);
+  if (pageCount > 0) {
+    const pages = await Promise.all(
+      Array.from({ length: pageCount }, (_, i) =>
+        client!.getList<Blog>({
+          endpoint: 'blog',
+          queries: { limit: LIMIT, offset: (i + 1) * LIMIT, fields: 'id' },
+        })
+      )
+    );
+    pages.forEach((page) => contents.push(...page.contents));
+  }
+  return contents;
 };

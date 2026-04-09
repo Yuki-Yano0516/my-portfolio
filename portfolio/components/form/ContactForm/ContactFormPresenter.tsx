@@ -65,7 +65,7 @@ export default function ContactFormPresenter({ state, action, isPending }: Props
         />
       </label>
 
-      {state.status !== 'idle' && (
+      {(state.status === 'success' || state.status === 'error') && (
         <p className={`${styles.feedback} ${styles[state.status]}`}>
           {state.message}
         </p>

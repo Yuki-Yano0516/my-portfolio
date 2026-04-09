@@ -1,13 +1,13 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import RevealObserverPresenter from './RevealObserverPresenter';
 
 export default function RevealObserverContainer() {
-  useEffect(() => {
-    const reveals = document.querySelectorAll('.reveal');
-    if (reveals.length === 0) return;
+  const pathname = usePathname();
 
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -20,9 +20,20 @@ export default function RevealObserverContainer() {
       { threshold: 0.12 }
     );
 
-    reveals.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+    const observe = () => {
+      document.querySelectorAll('.reveal:not(.visible)').forEach((el) => {
+        observer.observe(el);
+      });
+    };
+
+    // ページ遷移後に新しいDOM要素が描画されるのを待つ
+    const timer = setTimeout(observe, 50);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [pathname]);
 
   return <RevealObserverPresenter />;
 }

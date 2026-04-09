@@ -4,7 +4,7 @@ import { useActionState } from 'react';
 import { sendContactEmail, type ContactState } from '@/app/actions/contact';
 import ContactFormPresenter from './ContactFormPresenter';
 
-const initialState: ContactState = { status: 'idle', message: '' };
+const initialState: ContactState = { status: 'idle' };
 
 export default function ContactFormContainer() {
   const [state, action, isPending] = useActionState(sendContactEmail, initialState);
