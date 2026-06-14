@@ -97,13 +97,6 @@ body {
   color: var(--ink);
   font-size: 15px;
   line-height: 1.7;
-  cursor: none;
-}
-
-@media (hover: none) {
-  body {
-    cursor: auto;
-  }
 }
 
 /* ── Section 共通 ────────────────────────────────────────── */

@@ -15,10 +15,6 @@
   color: var(--ink-2);
 }
 
-.lead strong {
-  color: var(--ink);
-  font-weight: 700;
-}
 
 /* Skill tags */
 .skillsBlock {

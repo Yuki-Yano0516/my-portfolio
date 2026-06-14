@@ -25,11 +25,8 @@ export default function AboutPresenter() {
           {/* Left */}
           <div className="reveal">
             <p className={styles.lead}>
-              はじめまして。フロントエンドエンジニアの
-              <strong>矢野（Yano Yuki）</strong>
-              です。React・TypeScript・HTML/CSS を中心に、WebサイトやアプリのUI開発に携わってきました。
-              「こんなサイトにしたい」というイメージをお持ちの方へ、ヒアリングから納品まで丁寧にサポートします。
-              <strong>技術的なことはお任せください。</strong>
+              はじめまして。フロントエンドエンジニアの矢野（Yano Yuki）です。React・TypeScript・HTML/CSS を中心に、WebサイトやアプリのUI開発に携わってきました。
+              「こんなサイトにしたい」というイメージをお持ちの方へ、ヒアリングから納品まで丁寧にサポートします。技術的なことはお任せください。
             </p>
 
             <div className={styles.skillsBlock}>
