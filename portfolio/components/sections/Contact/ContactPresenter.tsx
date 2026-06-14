@@ -1,57 +1,36 @@
-import Footer from '@/components/layout/Footer';
+import ContactForm from '@/components/form/ContactForm';
 import styles from '@/styles/sections/Contact.module.css';
 
-type Social = {
-  label: string;
-  href: string;
-};
-
-type Props = {
-  email: string;
-  socials: Social[];
-};
-
-export default function ContactPresenter({ email, socials }: Props) {
+export default function ContactPresenter() {
   return (
-    <section id="contact" className={styles.contact}>
+    <section id="contact" className={`section ${styles.contact}`}>
       <div className="inner">
-        <div className="sectionLabel reveal" style={{ color: 'var(--gray-700)' }}>Contact</div>
+        <div className="sectionHead reveal">
+          <div className="sectionHead__kicker">
+            <i>05</i>
+            お問い合わせ
+          </div>
+          <span className="sectionHead__ghost">Contact</span>
+        </div>
 
-        <h2 className={`${styles.headline} reveal`}>
-          Let&apos;s work<br />
-          <em>together.</em>
-        </h2>
+        <div className={styles.grid}>
+          <div className="reveal">
+            <p className={styles.lead}>
+              お仕事のご相談、お気軽にどうぞ。
+              <strong>「こんなことできる？」という軽いご相談も大歓迎です。</strong>
+              通常2〜3営業日以内にご返信いたします。
+            </p>
+            <div className={styles.reply}>
+              <span className={styles.replyDot} />
+              ただいま新規のご相談を受け付けています
+            </div>
+          </div>
 
-        <p
-          className={`${styles.sub} reveal`}
-          style={{ '--delay': '0.1s' } as React.CSSProperties}
-        >
-          新規プロジェクト・お見積もり・ご相談など、お気軽にどうぞ。
-        </p>
-
-        <a
-          href={`mailto:${email}`}
-          className={`${styles.email} reveal`}
-          style={{ '--delay': '0.15s' } as React.CSSProperties}
-        >
-          {email}
-        </a>
-
-        <ul
-          className={`${styles.socials} reveal`}
-          style={{ '--delay': '0.2s' } as React.CSSProperties}
-        >
-          {socials.map(({ label, href }) => (
-            <li key={label}>
-              <a href={href} target="_blank" rel="noopener noreferrer">
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
+          <div className="reveal" style={{ '--delay': '0.1s' } as React.CSSProperties}>
+            <ContactForm />
+          </div>
+        </div>
       </div>
-
-      <Footer />
     </section>
   );
 }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
 
 /* ── Reset ─────────────────────────────────────────────── */
 *,
@@ -46,6 +46,21 @@ button {
 
 /* ── CSS 変数 ────────────────────────────────────────────── */
 :root {
+  /* Accent — warm terracotta */
+  --accent:       #c66b4a;
+  --accent-deep:  #a8553a;
+  --accent-soft:  #f7ece6;
+
+  /* Ink + neutrals */
+  --ink:    #1a1a1a;
+  --ink-2:  #56524c;
+  --ink-3:  #8c887f;
+  --bg:     #ffffff;
+  --bg-soft:#faf8f4;
+  --line:   #ece7df;
+  --line-2: #e3ddd2;
+
+  /* Legacy gray palette (kept for backward compat) */
   --black:    #111110;
   --gray-900: #1c1c1a;
   --gray-700: #3a3a37;
@@ -56,26 +71,35 @@ button {
   --gray-50:  #f4f3ef;
   --white:    #fafaf8;
 
+  /* Typography */
+  --font-en:      'Space Grotesk', system-ui, sans-serif;
+  --font-jp:      'Zen Kaku Gothic New', system-ui, sans-serif;
   --font-display: 'Cormorant Garamond', serif;
   --font-body:    'DM Sans', sans-serif;
 
+  /* Layout */
   --nav-h: 72px;
   --max-w: 1200px;
+
+  /* Radius */
+  --r-sm:   8px;
+  --r:      12px;
+  --r-lg:   18px;
+  --r-pill: 999px;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ── Base ───────────────────────────────────────────────── */
 body {
-  font-family: var(--font-body);
-  background: var(--white);
-  color: var(--black);
+  font-family: var(--font-jp);
+  background: var(--bg);
+  color: var(--ink);
   font-size: 15px;
   line-height: 1.7;
   cursor: none;
 }
 
-/* タッチデバイスではカーソルを通常に戻す */
 @media (hover: none) {
   body {
     cursor: auto;
@@ -84,38 +108,103 @@ body {
 
 /* ── Section 共通 ────────────────────────────────────────── */
 .section {
-  padding: 140px 48px;
+  padding-block: 120px;
+  padding-inline: 48px;
+}
+
+.sectionSoft {
+  background: var(--bg-soft);
 }
 
 .inner {
   max-width: var(--max-w);
-  margin: 0 auto;
+  margin-inline: auto;
 }
 
-.sectionLabel {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gray-300);
+/* ── Section Head（ウォーターマーク見出し） ──────────────── */
+.sectionHead {
+  position: relative;
+  margin-block-end: 56px;
+}
+
+.sectionHead__kicker {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 64px;
-  font-weight: 400;
+  gap: 10px;
+  margin-block-end: 2px;
+  font-size: 13px;
+  color: var(--ink-2);
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
-.sectionLabel::after {
-  content: '';
+.sectionHead__kicker i {
+  font-family: var(--font-en);
+  font-weight: 600;
+  font-style: normal;
+  color: var(--accent-deep);
+  letter-spacing: 0.12em;
+  font-size: 12px;
+}
+
+.sectionHead__ghost {
   display: block;
-  width: 40px;
-  height: 1px;
-  background: var(--gray-300);
+  font-family: var(--font-en);
+  font-weight: 700;
+  font-size: clamp(56px, 8vw, 96px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: rgba(198, 107, 74, 0.14);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ── Btn 共通 ───────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-jp);
+  font-weight: 600;
+  font-size: 15px;
+  padding-block: 14px;
+  padding-inline: 24px;
+  border-radius: var(--r);
+  border: 1.5px solid transparent;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btnPrimary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.btnPrimary:hover {
+  background: #fff;
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.btnGhost {
+  background: var(--bg);
+  color: var(--ink);
+  border-color: var(--line-2);
+}
+
+.btnGhost:hover {
+  border-color: var(--accent);
+  color: var(--accent-deep);
 }
 
 /* ── Reveal アニメーション ────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(24px);
   transition:
     opacity  0.7s ease,
     transform 0.7s ease;
@@ -138,6 +227,15 @@ body {
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 768px) {
   .section {
-    padding: 80px 24px;
+    padding-block: 72px;
+    padding-inline: 24px;
+  }
+
+  .sectionHead {
+    margin-block-end: 40px;
+  }
+
+  .sectionHead__ghost {
+    font-size: clamp(44px, 14vw, 64px);
   }
 }

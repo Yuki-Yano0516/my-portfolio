@@ -1,13 +1,13 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 18px;
 }
 
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 18px;
 }
 
 .field {
@@ -17,61 +17,68 @@
 }
 
 .label {
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gray-500);
-  font-weight: 400;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .required {
-  color: var(--black);
-  margin-left: 2px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+  padding-block: 2px;
+  padding-inline: 7px;
+  border-radius: var(--r-pill);
 }
 
 .input,
 .textarea {
-  width: 100%;
-  padding: 12px 16px;
+  font-family: var(--font-jp);
   font-size: 14px;
-  font-family: var(--font-body);
-  font-weight: 300;
-  color: var(--black);
-  background: var(--white);
-  border: 1px solid var(--gray-100);
-  border-radius: 2px;
-  outline: none;
-  transition: border-color 0.2s;
-  box-sizing: border-box;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1.5px solid var(--line-2);
+  border-radius: var(--r);
+  padding-block: 13px;
+  padding-inline: 15px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  width: 100%;
 }
 
 .input::placeholder,
 .textarea::placeholder {
-  color: var(--gray-300);
+  color: #b4afa5;
 }
 
 .input:focus,
 .textarea:focus {
-  border-color: var(--black);
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(198, 107, 74, 0.14);
 }
 
 .input:disabled,
 .textarea:disabled {
-  background: var(--gray-50);
+  background: var(--bg-soft);
   cursor: not-allowed;
   opacity: 0.6;
 }
 
 .textarea {
-  resize: vertical;
+  resize: none;
+  min-height: 128px;
   line-height: 1.7;
 }
 
 .feedback {
   font-size: 13px;
-  padding: 14px 18px;
-  border-radius: 2px;
-  font-weight: 300;
+  padding-block: 12px;
+  padding-inline: 16px;
+  border-radius: var(--r);
 }
 
 .success {
@@ -87,37 +94,37 @@
 }
 
 .submit {
-  align-self: flex-start;
-  padding: 14px 40px;
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  font-family: var(--font-body);
-  font-weight: 400;
-  color: var(--white);
-  background: var(--black);
-  border: none;
-  border-radius: 2px;
+  align-self: stretch;
+  padding-block: 14px;
+  padding-inline: 24px;
+  font-size: 15px;
+  font-family: var(--font-jp);
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border: 1.5px solid var(--accent);
+  border-radius: var(--r);
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .submit:hover:not(:disabled) {
-  opacity: 0.75;
+  background: #fff;
+  color: var(--accent);
+  transform: translateY(-1px);
 }
 
 .submit:disabled {
-  opacity: 0.4;
+  opacity: 0.45;
   cursor: not-allowed;
 }
 
 @media (max-width: 640px) {
   .row {
     grid-template-columns: 1fr;
-  }
-
-  .submit {
-    align-self: stretch;
-    text-align: center;
   }
 }

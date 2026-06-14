@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styles from '@/styles/components/Header.module.css';
 
-type NavLink = { href: string; label: string };
+type NavLink = { href: string; label: string; cta?: boolean };
 
 type Props = {
   scrolled: boolean;
@@ -22,12 +22,15 @@ export default function HeaderPresenter({
     <>
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
         <div className={styles.inner}>
-          <Link href="/" className={styles.logo}>Yano.</Link>
+          <Link href="/" className={styles.logo}>
+            <span className={styles.logoMark}>Y</span>
+            Yano Yuki
+          </Link>
 
           <ul className={styles.links}>
-            {navLinks.map(({ href, label }) => (
+            {navLinks.map(({ href, label, cta }) => (
               <li key={href}>
-                <a href={href}>{label}</a>
+                <a href={href} className={cta ? styles.ctaLink : undefined}>{label}</a>
               </li>
             ))}
           </ul>

@@ -15,9 +15,15 @@ type Props = {
 
 export default function BlogPresenter({ blogs }: Props) {
   return (
-    <section id="blog" className={`section ${styles.blog}`}>
+    <section id="blog" className={`section sectionSoft ${styles.blog}`}>
       <div className="inner">
-        <div className="sectionLabel reveal">Blog</div>
+        <div className="sectionHead reveal">
+          <div className="sectionHead__kicker">
+            <i>03</i>
+            ブログ
+          </div>
+          <span className="sectionHead__ghost">Blog</span>
+        </div>
 
         <div className={styles.list}>
           {blogs.map((blog, i) => {
@@ -31,13 +37,15 @@ export default function BlogPresenter({ blogs }: Props) {
                 style={{ '--delay': delay } as React.CSSProperties}
               >
                 <div className={styles.date}>{blog.date}</div>
-                <div>
-                  <div className={styles.title}>{blog.title}</div>
-                  <div className={styles.excerpt}>{blog.excerpt}...</div>
+                <div className={styles.content}>
+                  <div className={styles.titleRow}>
+                    <div className={styles.title}>{blog.title}</div>
+                    {blog.category && (
+                      <span className={styles.category}>{blog.category}</span>
+                    )}
+                  </div>
+                  <div className={styles.excerpt}>{blog.excerpt}…</div>
                 </div>
-                {blog.category && (
-                  <div className={styles.category}>{blog.category}</div>
-                )}
               </Link>
             );
           })}

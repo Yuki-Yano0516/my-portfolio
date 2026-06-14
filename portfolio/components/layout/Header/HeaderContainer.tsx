@@ -7,7 +7,7 @@ const navLinks = [
   { href: '/#works',   label: 'Works'   },
   { href: '/#about',   label: 'About'   },
   { href: '/#blog',    label: 'Blog'    },
-  { href: '/#contact', label: 'Contact' },
+  { href: '/#contact', label: 'お問い合わせ', cta: true },
 ];
 
 export default function HeaderContainer() {
