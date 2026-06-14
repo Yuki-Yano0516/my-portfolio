@@ -45,7 +45,7 @@ export default function AboutPresenter() {
               <span className={styles.portraitPlaceholder}>profile photo</span>
             </div>
             <p className={styles.portraitCaption}>
-              <b>矢野 雄基 / Yano Yuki</b><br />
+              <b>矢野 祐希 / Yano Yuki</b><br />
               事業会社のフロントエンドエンジニア。個人・小規模事業主の方のWeb制作をお手伝いしています。
             </p>
           </div>

@@ -54,10 +54,10 @@ export default function WorksPresenter({ works }: Props) {
 
                 <div className={styles.num}>{num}</div>
                 <div className={styles.title}>{work.title}</div>
-                {work.tags && work.tags.length > 0 && (
+                {Array.isArray(work.tags) && work.tags.length > 0 && (
                   <div className={styles.tags}>
                     {work.tags.map((tag, ti) => (
-                      <span key={tag}>
+                      <span key={String(tag)}>
                         {ti > 0 && <span className={styles.tagSep}>·</span>}
                         {tag}
                       </span>
