@@ -1,84 +1,47 @@
 .contact {
-  background: var(--black);
-  color: var(--white);
-  padding: 140px 48px 0;
+  background: var(--bg);
 }
 
-.contact .sectionLabel {
-  color: var(--gray-700);
+.grid {
+  display: grid;
+  gap: 40px;
+  align-items: start;
 }
 
-.contact .sectionLabel::after {
-  background: var(--gray-700);
-}
-
-.headline {
-  font-family: var(--font-display);
-  font-size: clamp(48px, 8vw, 100px);
-  font-weight: 300;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  margin-bottom: 16px;
-}
-
-.headline em {
-  font-style: italic;
-  color: var(--gray-500);
-}
-
-.sub {
+.lead {
   font-size: 15px;
-  color: var(--gray-500);
-  max-width: 380px;
-  line-height: 1.8;
-  margin-bottom: 64px;
-  font-weight: 300;
+  line-height: 2.0;
+  color: var(--ink-2);
 }
 
-.email {
-  display: inline-block;
-  font-family: var(--font-display);
-  font-size: clamp(24px, 4vw, 40px);
-  font-weight: 300;
-  color: var(--white);
-  border-bottom: 1px solid var(--gray-700);
-  padding-bottom: 6px;
-  margin-bottom: 80px;
-  letter-spacing: -0.01em;
-  transition: border-color 0.2s;
+.lead strong {
+  color: var(--ink);
+  font-weight: 700;
 }
 
-.email:hover {
-  border-color: var(--white);
+.reply {
+  margin-block-start: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--ink-2);
+  font-weight: 500;
 }
 
-.socials {
-  display: flex;
-  gap: 32px;
-  list-style: none;
-  margin-bottom: 100px;
+.replyDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #5bb495;
+  box-shadow: 0 0 0 3px rgba(91, 180, 149, 0.18);
+  flex-shrink: 0;
 }
 
-.socials a {
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gray-500);
-  font-weight: 400;
-  transition: color 0.2s;
-}
-
-.socials a:hover {
-  color: var(--white);
-}
-
-@media (max-width: 768px) {
-  .contact {
-    padding: 80px 24px 0;
-  }
-
-  .socials {
-    flex-wrap: wrap;
-    gap: 20px;
+/* Responsive */
+@media (min-width: 760px) {
+  .grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 64px;
   }
 }

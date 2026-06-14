@@ -1,6 +1,4 @@
-.blog {
-  background: var(--white);
-}
+.blog {}
 
 .list {
   display: flex;
@@ -9,65 +7,79 @@
 
 .item {
   display: grid;
-  grid-template-columns: 120px 1fr 140px;
-  align-items: center;
-  gap: 40px;
-  padding: 32px 0;
-  border-bottom: 1px solid var(--gray-100);
-  color: inherit;
-  cursor: none;
+  grid-template-columns: 110px 1fr;
+  align-items: start;
+  gap: 24px;
+  padding-block: 28px;
+  border-block-end: 1px solid var(--line);
+  color: var(--ink);
   transition: opacity 0.2s;
 }
 
 .item:first-child {
-  border-top: 1px solid var(--gray-100);
+  border-block-start: 1px solid var(--line);
 }
 
 .item:hover {
-  opacity: 0.6;
+  opacity: 0.65;
 }
 
 .date {
+  font-family: var(--font-en);
   font-size: 12px;
-  color: var(--gray-300);
-  letter-spacing: 0.05em;
-  font-weight: 400;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  padding-block-start: 3px;
   flex-shrink: 0;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 .title {
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  margin-bottom: 6px;
-  line-height: 1.4;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.category {
+  font-family: var(--font-en);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+  padding-block: 3px;
+  padding-inline: 9px;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-weight: 600;
 }
 
 .excerpt {
   font-size: 13px;
-  color: var(--gray-500);
-  font-weight: 300;
-  line-height: 1.6;
-}
-
-.category {
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gray-300);
-  text-align: right;
-  font-weight: 400;
-  flex-shrink: 0;
+  color: var(--ink-3);
+  line-height: 1.7;
 }
 
 @media (max-width: 768px) {
   .item {
     grid-template-columns: 1fr;
-    gap: 8px;
-    padding: 24px 0;
-  }
-
-  .category {
-    text-align: left;
+    gap: 6px;
+    padding-block: 22px;
   }
 }

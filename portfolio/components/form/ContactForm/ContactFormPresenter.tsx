@@ -10,60 +10,49 @@ type Props = {
 export default function ContactFormPresenter({ state, action, isPending }: Props) {
   return (
     <form action={action} className={styles.form}>
-      <div className={styles.row}>
-        <label className={styles.field}>
-          <span className={styles.label}>
-            お名前 <span className={styles.required}>*</span>
-          </span>
-          <input
-            type="text"
-            name="name"
-            required
-            disabled={isPending}
-            placeholder="山田 太郎"
-            className={styles.input}
-          />
+      <div className={styles.field}>
+        <label className={styles.label} htmlFor="pf-name">
+          お名前 <span className={styles.required}>必須</span>
         </label>
-
-        <label className={styles.field}>
-          <span className={styles.label}>
-            メールアドレス <span className={styles.required}>*</span>
-          </span>
-          <input
-            type="email"
-            name="email"
-            required
-            disabled={isPending}
-            placeholder="example@mail.com"
-            className={styles.input}
-          />
-        </label>
-      </div>
-
-      <label className={styles.field}>
-        <span className={styles.label}>件名</span>
         <input
+          id="pf-name"
           type="text"
-          name="subject"
+          name="name"
+          required
           disabled={isPending}
-          placeholder="ご依頼・ご相談など"
+          placeholder="山田 太郎"
           className={styles.input}
         />
-      </label>
+      </div>
 
-      <label className={styles.field}>
-        <span className={styles.label}>
-          お問い合わせ内容 <span className={styles.required}>*</span>
-        </span>
+      <div className={styles.field}>
+        <label className={styles.label} htmlFor="pf-email">
+          メールアドレス <span className={styles.required}>必須</span>
+        </label>
+        <input
+          id="pf-email"
+          type="email"
+          name="email"
+          required
+          disabled={isPending}
+          placeholder="you@example.com"
+          className={styles.input}
+        />
+      </div>
+
+      <div className={styles.field}>
+        <label className={styles.label} htmlFor="pf-msg">
+          ご相談内容 <span className={styles.required}>必須</span>
+        </label>
         <textarea
+          id="pf-msg"
           name="message"
           required
           disabled={isPending}
-          rows={8}
-          placeholder="ご依頼内容・ご質問などをご記入ください。"
+          placeholder="どんなサイトを作りたいか、ざっくりで大丈夫です。"
           className={styles.textarea}
         />
-      </label>
+      </div>
 
       {(state.status === 'success' || state.status === 'error') && (
         <p className={`${styles.feedback} ${styles[state.status]}`}>
@@ -76,7 +65,7 @@ export default function ContactFormPresenter({ state, action, isPending }: Props
         disabled={isPending || state.status === 'success'}
         className={styles.submit}
       >
-        {isPending ? '送信中...' : '送信する'}
+        {isPending ? '送信中…' : '送信する →'}
       </button>
     </form>
   );

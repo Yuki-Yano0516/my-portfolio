@@ -1,0 +1,101 @@
+.skills {}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+/* Column */
+.col h3 {
+  font-family: var(--font-en);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-block-end: 4px;
+}
+
+.col h3 + p {
+  font-size: 13px;
+  color: var(--ink-2);
+  margin-block-end: 22px;
+}
+
+/* Stack chips */
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  padding-block: 8px;
+  padding-inline: 14px;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--line-2);
+  color: var(--ink-2);
+  background: var(--bg);
+}
+
+.chipDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Job list */
+.jobList {
+  display: flex;
+  flex-direction: column;
+}
+
+.job {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  padding-block: 14px;
+  border-block-start: 1px solid var(--line);
+}
+
+.job:first-child {
+  border-block-start: none;
+}
+
+.tick {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+/* Responsive */
+@media (min-width: 760px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .jobs {
+    padding-inline-start: 64px;
+    border-inline-start: 1px solid var(--line);
+  }
+}
